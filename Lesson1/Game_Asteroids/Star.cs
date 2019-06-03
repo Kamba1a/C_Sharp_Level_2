@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace Lesson1
+namespace Game_Asteroids
 {
     class Star: BaseObject
     {

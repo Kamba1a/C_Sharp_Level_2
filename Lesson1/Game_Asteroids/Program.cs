@@ -4,11 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Lesson1
+namespace Game_Asteroids
 {
     static class Program
     {
-        [STAThread]
+        //[STAThread]
         static void Main()
         {
             Form form = new Form();

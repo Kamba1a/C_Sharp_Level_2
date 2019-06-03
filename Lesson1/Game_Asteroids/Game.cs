@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Lesson1
+namespace Game_Asteroids
 {
     class Game
     {

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Lesson1.Properties
+namespace Game_Asteroids.Properties
 {
 
 
