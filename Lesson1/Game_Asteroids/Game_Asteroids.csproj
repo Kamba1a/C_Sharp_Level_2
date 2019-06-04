@@ -47,8 +47,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseObject.cs" />
-    <Compile Include="Comet.cs" />
-    <Compile Include="Ellipse.cs" />
+    <Compile Include="Asteroid.cs" />
+    <Compile Include="FarAsteroid.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

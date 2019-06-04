@@ -4,11 +4,22 @@ using System.Windows.Forms;
 
 namespace Game_Asteroids
 {
+    /// <summary>
+    /// Основной класс игры
+    /// </summary>
     class Game
     {
         private static BufferedGraphicsContext _context;
         public static BufferedGraphics Buffer;
+
+        /// <summary>
+        /// Массив с игровыми объектами
+        /// </summary>
         public static BaseObject[] _objs;
+
+        /// <summary>
+        /// Космический корабль
+        /// </summary>
         public static Ship ship;
 
         // Ширина и высота игрового поля
@@ -19,6 +30,10 @@ namespace Game_Asteroids
         {
         }
 
+        /// <summary>
+        /// Инициализация игры
+        /// </summary>
+        /// <param name="form"></param>
         public static void Init(Form form)
         {
             // Графическое устройство для вывода графики            
@@ -44,13 +59,20 @@ namespace Game_Asteroids
             timer.Tick += Timer_Tick;
         }
 
+        /// <summary>
+        /// Таймер повтора событий
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private static void Timer_Tick(object sender, EventArgs e)
         {
             Draw();
             Update();
         }
 
-
+        /// <summary>
+        /// Отрисовка игровых объектов
+        /// </summary>
         public static void Draw()
         {
             Buffer.Graphics.Clear(Color.Black);
@@ -59,12 +81,18 @@ namespace Game_Asteroids
             Buffer.Render();
         }
 
+        /// <summary>
+        /// Обновление координат нахождения игровых объектов
+        /// </summary>
         public static void Update()
         {
             foreach (BaseObject obj in _objs) obj.Update();
             ship.Update();
         }
 
+        /// <summary>
+        /// Создание игровых объетков
+        /// </summary>
         public static void Load()
         {
             _objs = new BaseObject[55];
@@ -88,7 +116,7 @@ namespace Game_Asteroids
                 randSpeed = r.Next(15, 30);
                 randSize = r.Next(3,15);
 
-                _objs[i] = new Ellipse(new Point(randPos, (i-20) * 57 + 20), new Point(randSize, 0), new Size(randSize, randSize));
+                _objs[i] = new FarAsteroid(new Point(randPos, (i-20) * 57 + 20), new Point(randSize, 0), new Size(randSize, randSize));
             }
 
             for (int i = 30; i < 50; i++)
@@ -106,10 +134,10 @@ namespace Game_Asteroids
                 randSpeed = r.Next(15, 25);
                 randSize = r.Next(20, 35);
 
-                _objs[i] = new Comet(new Point(randPos, (i - 50) * 115 + 20), new Point(randSpeed, 0), new Size(randSize, randSize));
+                _objs[i] = new Asteroid(new Point(randPos, (i - 50) * 115 + 20), new Point(randSpeed, 0), new Size(randSize, randSize), "asteroid.jpg");
             }
 
-            ship = new Ship(new Point(100, 300), new Point(5, 10), new Size(60, 25));
+            ship = new Ship(new Point(100, 300), new Point(5, 10), new Size(60, 25), "ship.jpg");
 
         }
     }
