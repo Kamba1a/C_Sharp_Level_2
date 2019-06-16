@@ -80,6 +80,8 @@ namespace Task2
 
             // 2c.	** используя Linq.
 
+            /*
+            //первая версия:
             List<int> list3 = new List<int>();
             list3.AddRange(list);
 
@@ -94,7 +96,33 @@ namespace Task2
                 list3.RemoveAll(n => n == elem);
             }
             Console.WriteLine("====================");
+            */
 
+
+            //правильная версия:
+            List<int> list3 = new List<int>();
+            list3.AddRange(list);
+
+            Console.WriteLine("\nПодсчет элементов используя Linq:");
+            Console.WriteLine("====================");
+            Console.WriteLine("Элемент | Количество");
+
+            //можно так:
+            //var res = from n in list3
+            //          group n by n into g
+            //          select new { name = g.Key, count = g.Count() };
+            //foreach (var group in res) Console.WriteLine($"   {group.name,-4} | {group.count,5}");
+
+            //можно покороче:
+            var res = from n in list3
+                      group n by n;
+            foreach (var group in res) Console.WriteLine($"   {group.Key,-4} | {group.Count(),5}");
+
+            //то же, что выше, но еще более коротко:
+            //var res = list3.GroupBy(n => n);
+            //foreach (var group in res) Console.WriteLine($"   {group.Key,-4} | {group.Count(),5}");
+
+            Console.WriteLine("====================");
 
 
             Console.ReadKey();

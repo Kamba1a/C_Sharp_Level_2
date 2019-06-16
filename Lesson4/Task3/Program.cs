@@ -30,6 +30,7 @@ namespace Task3
 {
     class Program
     {
+        //делегат для пункта b
         delegate int myDelegate(KeyValuePair<string, int> pair);
 
         static void Main(string[] args)
@@ -81,12 +82,13 @@ namespace Task3
                 return pair.Value;
             }
 
-            myDelegate md = new myDelegate(myMethod);
+            //OrderBy принимает параметром только обобщенный делегат, поэтому, как хотелось, со своим делегатом не заработает:
+            //myDelegate md = new myDelegate(myMethod);
 
-            //не работает:
-            //var d3 = dict3.OrderBy(md);
-            //foreach (var pair in d3) Console.WriteLine("{0} - {1}", pair.Key, pair.Value);
+            Func<KeyValuePair<string, int>, int> md = myMethod;
 
+            var d3 = dict3.OrderBy(md);
+            foreach (var pair in d3) Console.WriteLine("{0} - {1}", pair.Key, pair.Value);
 
 
             Console.ReadKey();

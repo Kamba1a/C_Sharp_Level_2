@@ -350,7 +350,7 @@ namespace Game_Asteroids
                 _asteroids.Add(new Asteroid(new Point(Game.Width, Rnd.Next(1, Game.Height - 45)), new Point(Rnd.Next(10, 20), 0), new Size(randSize, randSize)));
             }
 
-            _ship = new Ship(new Point(50, 300), new Point(0, 10), new Size(70, 30), "ship.jpg");
+            _ship = new Ship(new Point(50, 300), new Point(0, 7), new Size(70, 30), "ship.jpg");
         }
 
 
