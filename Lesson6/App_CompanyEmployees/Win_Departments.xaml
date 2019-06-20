@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:App_CompanyEmployees"
         mc:Ignorable="d"
-        Title="Список департаментов" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="Список департаментов" Height="450" Width="900" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="25*"/>
-            <ColumnDefinition Width="11*"/>
+            <ColumnDefinition Width="173*"/>
+            <ColumnDefinition Width="50*"/>
         </Grid.ColumnDefinitions>
         <ListBox x:Name="lst_Departments" DisplayMemberPath="Name" HorizontalAlignment="Stretch" Margin="50" VerticalAlignment="Stretch"/>
-        <Button x:Name="btn_Add" Content="Добавить" HorizontalAlignment="Center" VerticalAlignment="Top" Width="130" Height="50" Grid.Column="1" Margin="-0,50,0,0" Click="Btn_Add_Click"/>
+        <Button x:Name="btn_Add" Content="Добавить" HorizontalAlignment="Center" VerticalAlignment="Top" Width="130" Height="50" Grid.Column="1" Margin="0,50,0,0" Click="Btn_Add_Click"/>
         <Button x:Name="btn_Del" Content="Удалить" HorizontalAlignment="Center" Margin="0,120,0,0" VerticalAlignment="Top" Width="130" Height="50" Grid.Column="1" Click="Btn_Del_Click"/>
         <Button x:Name="btn_edit" Content="Редактировать" HorizontalAlignment="Center" Margin="0,190,0,0" VerticalAlignment="Top" Width="130" Height="50" Grid.Column="1" Click="Btn_edit_Click"/>
         <Button x:Name="btn_openEmpl" Content="Открыть..." HorizontalAlignment="Center" Margin="0,260,0,0" VerticalAlignment="Top" Width="130" Height="50" Grid.Column="1" Click="Btn_openEmpl_Click"/>

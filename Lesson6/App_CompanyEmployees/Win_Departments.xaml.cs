@@ -25,54 +25,35 @@ namespace App_CompanyEmployees
         /// <summary>
         /// коллекция департаментов
         /// </summary>
-        static ObservableCollection<Department> _departments = new ObservableCollection<Department>();
+        public static ObservableCollection<Department> Departments { get; set; } = new ObservableCollection<Department>()
+        {
+            new Department($"Департамент 1"),
+            new Department($"Департамент 2"),
+            new Department($"Департамент 3"),
+            new Department($"Департамент 4")
+        };
 
         /// <summary>
         /// Индекс выбранного элемента в списке ListBox lst_Departments
         /// </summary>
-        public static int SelectedListBoxItemIndex { get ; set; }
+        static int _selectedListBoxItemIndex;
 
+        /// <summary>
+        /// Конструктор
+        /// </summary>
         public Win_Departments()
         {
             InitializeComponent();
-            
-            for (int i = 0; i < 3; i++) _departments.Add(new Department($"Департамент {i + 1}"));
-
-            lst_Departments.ItemsSource = _departments;
-
-            _departments.Add(new Department($"Департамент 4"));
+            lst_Departments.ItemsSource = Departments;
         }
 
         /// <summary>
-        /// Добавляет новый департамент в коллекцию 
-        /// </summary>
-        /// <param name="department"></param>
-        public static void DepartmentAdd(Department department)
-        {
-            _departments.Add(department);
-        }
-
-        /// <summary>
-        /// Изменить имя департамента в коллекции
-        /// </summary>
-        /// <param name="newName"></param>
-        public static void DepartmentNameEdit(string newName)
-        {
-            _departments[SelectedListBoxItemIndex].Name = newName;
-        }
-
-        /// <summary>
-        /// Получить доступ к коллекции департаментов
+        /// Выбранный в ListBox департамент
         /// </summary>
         /// <returns></returns>
-        public static ObservableCollection<Department> GetDepartments()
-        {
-            return _departments;
-        }
-
         public static Department GetSelectedDepartment()
         {
-            return _departments[SelectedListBoxItemIndex];
+            return Departments[_selectedListBoxItemIndex];
         }
 
         /// <summary>
@@ -97,7 +78,7 @@ namespace App_CompanyEmployees
             if (lst_Departments.SelectedItem != null)
             {
                 MessageBoxResult confirm = MessageBox.Show("Вы уверены, что хотите удалить департамент?", "Подтвердите удаление", MessageBoxButton.YesNo);
-                if (confirm == MessageBoxResult.Yes) _departments.RemoveAt(lst_Departments.SelectedIndex);
+                if (confirm == MessageBoxResult.Yes) Departments.RemoveAt(lst_Departments.SelectedIndex);
             }
             else MessageBox.Show("Для удаления выберите департамент в списке");
         }
@@ -111,7 +92,7 @@ namespace App_CompanyEmployees
         {
             if (lst_Departments.SelectedItem != null)
              {
-                SelectedListBoxItemIndex = lst_Departments.SelectedIndex;
+                _selectedListBoxItemIndex = lst_Departments.SelectedIndex;
                 Win_DepartmentEdit win_departmentEdit = new Win_DepartmentEdit();
                 win_departmentEdit.Owner = this;
                 win_departmentEdit.Show();
@@ -124,7 +105,7 @@ namespace App_CompanyEmployees
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Btn_GenListEmpl_Click(object sender, RoutedEventArgs e)    // !!! Повторное открытие приводит к задваиванию списка в ListBox !!!
+        private void Btn_GenListEmpl_Click(object sender, RoutedEventArgs e)
         {
             Win_Employees win_Employees = new Win_Employees();
             win_Employees.Show();
@@ -140,12 +121,13 @@ namespace App_CompanyEmployees
         {
             if (lst_Departments.SelectedItem != null)
             {
-                SelectedListBoxItemIndex = lst_Departments.SelectedIndex;
+                _selectedListBoxItemIndex = lst_Departments.SelectedIndex;
                 Win_EmloyeesOfDepartment win_EmloyeesOfDepartment = new Win_EmloyeesOfDepartment();
                 win_EmloyeesOfDepartment.Owner = this;
                 win_EmloyeesOfDepartment.Show();
             }
             else MessageBox.Show("Для открытия выберите департамент в списке");
         }
+
     }
 }

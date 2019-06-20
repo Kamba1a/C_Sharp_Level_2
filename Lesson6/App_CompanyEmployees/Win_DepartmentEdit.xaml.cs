@@ -19,11 +19,19 @@ namespace App_CompanyEmployees
     /// </summary>
     public partial class Win_DepartmentEdit : Window
     {
+        /// <summary>
+        /// Ссылка на выбранный департамент в ListBox окна со списком департаментов
+        /// </summary>
+        Department _selectedDepartment = Win_Departments.GetSelectedDepartment();
+
+        /// <summary>
+        /// Конструктор
+        /// </summary>
         public Win_DepartmentEdit()
         {
             InitializeComponent();
 
-            txtBox_input.Text = Win_Departments.GetDepartments()[Win_Departments.SelectedListBoxItemIndex].Name;
+            txtBox_input.Text = _selectedDepartment.Name;
         }
 
         /// <summary>
@@ -45,7 +53,7 @@ namespace App_CompanyEmployees
         {
             if (txtBox_input.Text != "")
             {
-                Win_Departments.DepartmentNameEdit(txtBox_input.Text);
+                _selectedDepartment.Name = txtBox_input.Text;
                 this.Close();
             }
         }

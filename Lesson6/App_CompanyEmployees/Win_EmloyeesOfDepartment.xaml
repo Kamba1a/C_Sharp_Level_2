@@ -5,26 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:App_CompanyEmployees"
         mc:Ignorable="d"
-        Title="Работники департамента" Height="450" Width="800" WindowStartupLocation="CenterOwner">
+        Title="Работники департамента" Height="450" Width="900" WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="74*"/>
-            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="173*"/>
+            <ColumnDefinition Width="50*"/>
         </Grid.ColumnDefinitions>
         <ListView x:Name="lst_Employees" HorizontalAlignment="Stretch" Margin="50,75,50,50" VerticalAlignment="Stretch">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Фамилия" Width="120" DisplayMemberBinding="{Binding SecondName}" />
-                    <GridViewColumn Header="Имя" Width="100" DisplayMemberBinding="{Binding FirstName}" />
-                    <GridViewColumn Header="Должность" Width="130" DisplayMemberBinding="{Binding Position}" />
-                    <GridViewColumn Header="Зарплата" Width="100" DisplayMemberBinding="{Binding Salary}" />
+                    <GridViewColumn Header="Фамилия" Width="150" DisplayMemberBinding="{Binding SecondName}" />
+                    <GridViewColumn Header="Имя" Width="125" DisplayMemberBinding="{Binding FirstName}" />
+                    <GridViewColumn Header="Должность" Width="150" DisplayMemberBinding="{Binding Position}" />
+                    <GridViewColumn Header="Зарплата" Width="125" DisplayMemberBinding="{Binding Salary}" />
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="btn_Add" Content="Добавить" HorizontalAlignment="Center" VerticalAlignment="Top" Width="130" Height="50" Grid.Column="1" Margin="26,50,44,0" Click="Btn_Add_Click"/>
-        <Button x:Name="btn_Del" Content="Удалить" HorizontalAlignment="Center" Margin="26,120,44,0" VerticalAlignment="Top" Width="130" Height="50" Grid.Column="1" Click="Btn_Del_Click"/>
-        <Button x:Name="btn_edit" Content="Редактировать" HorizontalAlignment="Center" Margin="26,190,44,0" VerticalAlignment="Top" Width="130" Height="50" Grid.Column="1" Click="Btn_edit_Click"/>
-        <Button x:Name="btn_Close" Content="Закрыть" HorizontalAlignment="Center" Margin="26,0,44,30" VerticalAlignment="Bottom" Width="130" Height="50" Grid.Column="1" Click="btn_Close_Click"/>
-        <Label x:Name="lbl_DepartmentName" Content="Название выбранного департамента" HorizontalAlignment="Center" Margin="112,45,130,0" VerticalAlignment="Top" Width="350" Height="25" HorizontalContentAlignment="Center"/>
+        <Button x:Name="btn_Add" Content="Добавить" HorizontalAlignment="Center" VerticalAlignment="Top" Width="130" Height="50" Grid.Column="1" Margin="0,50,0,0" Click="Btn_Add_Click"/>
+        <Button x:Name="btn_Del" Content="Удалить" HorizontalAlignment="Center" Margin="0,120,0,0" VerticalAlignment="Top" Width="130" Height="50" Grid.Column="1" Click="Btn_Del_Click"/>
+        <Button x:Name="btn_edit" Content="Редактировать" HorizontalAlignment="Center" Margin="0,190,0,0" VerticalAlignment="Top" Width="130" Height="50" Grid.Column="1" Click="Btn_edit_Click"/>
+        <Button x:Name="btn_Close" Content="Закрыть" HorizontalAlignment="Center" Margin="0,0,0,30" VerticalAlignment="Bottom" Width="130" Height="50" Grid.Column="1" Click="btn_Close_Click"/>
+        <Label x:Name="lbl_DepartmentName" Content="Название выбранного департамента" HorizontalAlignment="Center" Margin="164,45,178,0" VerticalAlignment="Top" Width="350" Height="25" HorizontalContentAlignment="Center"/>
     </Grid>
 </Window>

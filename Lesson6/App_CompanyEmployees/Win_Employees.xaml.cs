@@ -24,56 +24,35 @@ namespace App_CompanyEmployees
         /// <summary>
         /// Коллекция работников
         /// </summary>
-        static ObservableCollection<Employee> _employees = new ObservableCollection<Employee>();
+        public static ObservableCollection<Employee> Employees { get; set; } = new ObservableCollection<Employee>()
+        {
+            new Employee($"Имя1", $"Фамилия1", $"Должность1", 20000),
+            new Employee($"Имя2", $"Фамилия2", $"Должность2", 30000),
+            new Employee($"Имя3", $"Фамилия3", $"Должность3", 40000),
+            new Employee($"Имя4", $"Фамилия4", $"Должность4", 50000)
+        };
 
-        public static int SelectedListBoxItemIndex { get; set; }
+        /// <summary>
+        /// Индекс выбранного в ListView работника из коллекции
+        /// </summary>
+        static int _selectedListBoxItemIndex { get; set; }
 
+        /// <summary>
+        /// Конструктор
+        /// </summary>
         public Win_Employees()
         {
             InitializeComponent();
-
-            for (int i = 0; i < 3; i++) _employees.Add(new Employee($"Имя{i + 1}", $"Фамилия{i + 1}", $"Должность{i + 1}", 10000*i));
-
-            lst_Employees.ItemsSource = _employees;
-
-            _employees.Add(new Employee($"Имя4", $"Фамилия4", $"Должность4", 99999));
+            lst_Employees.ItemsSource = Employees;
         }
 
         /// <summary>
-        /// Добавить работника в коллекцию
-        /// </summary>
-        /// <param name="firstName"></param>
-        /// <param name="secondName"></param>
-        /// <param name="position"></param>
-        /// <param name="department"></param>
-        public static void EmployeeAdd(string firstName, string secondName, string position, int salary, Department department)
-        {
-            _employees.Add(new Employee(firstName, secondName, position, salary, department));
-        }
-
-        /// <summary>
-        /// Редкатировать данные работника
-        /// </summary>
-        /// <param name="firstName"></param>
-        /// <param name="secondName"></param>
-        /// <param name="position"></param>
-        /// <param name="department"></param>
-        public static void EmployeeEdit(string firstName, string secondName, string position, int salary, Department department)
-        {
-            _employees[SelectedListBoxItemIndex].FirstName = firstName;
-            _employees[SelectedListBoxItemIndex].SecondName = secondName;
-            _employees[SelectedListBoxItemIndex].Position = position;
-            _employees[SelectedListBoxItemIndex].Salary = salary;
-            _employees[SelectedListBoxItemIndex].Department = department;
-        }
-
-        /// <summary>
-        /// Получить доступ к коллекции работников
+        /// Выбранный в ListView работник
         /// </summary>
         /// <returns></returns>
-        public static ObservableCollection<Employee> GetEmployeesCollection()
+        public static Employee GetSelectedEmployee()
         {
-            return _employees;
+            return Employees[_selectedListBoxItemIndex];
         }
 
         /// <summary>
@@ -98,7 +77,7 @@ namespace App_CompanyEmployees
             if (lst_Employees.SelectedItem != null)
             {
                 MessageBoxResult confirm = MessageBox.Show("Вы уверены, что хотите удалить работника?", "Подтвердите удаление", MessageBoxButton.YesNo);
-                if (confirm == MessageBoxResult.Yes) _employees.RemoveAt(lst_Employees.SelectedIndex);
+                if (confirm == MessageBoxResult.Yes) Employees.RemoveAt(lst_Employees.SelectedIndex);
             }
             else MessageBox.Show("Для удаления выберите департамент в списке");
         }
@@ -112,7 +91,7 @@ namespace App_CompanyEmployees
         {
             if (lst_Employees.SelectedItem != null)
             {
-                SelectedListBoxItemIndex = lst_Employees.SelectedIndex;
+                _selectedListBoxItemIndex = lst_Employees.SelectedIndex;
                 Win_EmployeeEdit win_employeeEdit = new Win_EmployeeEdit();
                 win_employeeEdit.Owner = this;
                 win_employeeEdit.Show();
@@ -125,10 +104,8 @@ namespace App_CompanyEmployees
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btn_DepartmentList_Click(object sender, RoutedEventArgs e)     // !!! Повторное открытие приводит к задваиванию списка в ListBox !!!
+        private void btn_DepartmentList_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Предполагалось, что будет простое переключение между окнами, но в итоге при повторном открытии задваивается список в ListBox"); //временно
-            ///Понятно, что проблема из-за того, что каждый раз создаю новое окно, но как восстановить прежнее - не понятно (по имени окна обратиться к нему не получается)
             Win_Departments win_Departments = new Win_Departments();
             win_Departments.Show();
             this.Close();

@@ -24,7 +24,6 @@ namespace App_CompanyEmployees
     /// </summary>
     public partial class App : Application
     {
-
     }
 
 }

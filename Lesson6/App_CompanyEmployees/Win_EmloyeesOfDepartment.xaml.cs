@@ -21,16 +21,26 @@ namespace App_CompanyEmployees
     /// </summary>
     public partial class Win_EmloyeesOfDepartment : Window
     {
-        static ObservableCollection<Employee> _employeesOfDepartment = new ObservableCollection<Employee>();
+        //ObservableCollection<Employee> _employeesOfDepartment;
+
+        /// <summary>
+        /// Ссылка на общую коллекцию работников
+        /// </summary>
+        ObservableCollection<Employee> _employees = Win_Employees.Employees;
+
+        /// <summary>
+        /// Ссылка на выбранный депаратамент в ListBox окна со списком департаментов
+        /// </summary>
+        Department _openedDepartment = Win_Departments.GetSelectedDepartment();
 
         public Win_EmloyeesOfDepartment()
         {
             InitializeComponent();
 
-            lbl_DepartmentName.Content = Win_Departments.GetDepartments()[Win_Departments.SelectedListBoxItemIndex].Name;
+            lbl_DepartmentName.Content = _openedDepartment.Name;
 
-            lst_Employees.ItemsSource = from empl in Win_Employees.GetEmployeesCollection()                                                 //!!! не обновляет изменения !
-                                        where empl.Department == Win_Departments.GetDepartments()[Win_Departments.SelectedListBoxItemIndex]
+            lst_Employees.ItemsSource = from empl in _employees     //!!! не обновляет изменения !
+                                        where empl.Department == _openedDepartment
                                         select empl;
         }
 
@@ -41,13 +51,13 @@ namespace App_CompanyEmployees
         /// <param name="e"></param>
         private void Btn_Add_Click(object sender, RoutedEventArgs e)
         {
-            Win_EmployeeAdd win_employeeAdd = new Win_EmployeeAdd();
-            win_employeeAdd.Owner = this;
-            win_employeeAdd.Show();
+            Win_EmployeeAddToDepartment win_employeeAddToDepartment = new Win_EmployeeAddToDepartment();
+            win_employeeAddToDepartment.Owner = this;
+            win_employeeAddToDepartment.Show();
         }
 
         /// <summary>
-        /// Кнопка "Удалить" - должна удалять работника из общей коллекции
+        /// Кнопка "Удалить" - удаляет работника из общей коллекции работников
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -55,7 +65,8 @@ namespace App_CompanyEmployees
         {
             if (lst_Employees.SelectedItem != null)
             {
-                Win_Employees.GetEmployeesCollection().Remove(lst_Employees.SelectedItem as Employee);
+                _employees.Remove(lst_Employees.SelectedItem as Employee);
+                MessageBox.Show("Удаление в общем списке произошло, но в текущем обновление пока не реализовано"); //временно
             }
             else MessageBox.Show("Для удаления выберите департамент в списке");
         }

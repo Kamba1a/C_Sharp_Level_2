@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 
 namespace App_CompanyEmployees
 {
@@ -19,19 +21,32 @@ namespace App_CompanyEmployees
     /// </summary>
     public partial class Win_EmployeeEdit : Window
     {
+        /// <summary>
+        /// Ссылка на выбранного работника в ListView в окне с общим списком работников
+        /// </summary>
+        Employee _selectedEmployee = Win_Employees.GetSelectedEmployee();
+
+        /// <summary>
+        /// Ссылка на общую коллекцию департаментов
+        /// </summary>
+        ObservableCollection<Department> _departments = Win_Departments.Departments;
+
+        /// <summary>
+        /// Конструктор
+        /// </summary>
         public Win_EmployeeEdit()
         {
             InitializeComponent();
 
-            txtBlck_ID.Text = Win_Employees.GetEmployeesCollection()[Win_Employees.SelectedListBoxItemIndex].ID.ToString("d3");
-            CmbBox_Departmenrs.ItemsSource = Win_Departments.GetDepartments();
-            txtBx_FirstName.Text = Win_Employees.GetEmployeesCollection()[Win_Employees.SelectedListBoxItemIndex].FirstName;
-            txtBx_SecondName.Text = Win_Employees.GetEmployeesCollection()[Win_Employees.SelectedListBoxItemIndex].SecondName;
-            txtBx_Position.Text= Win_Employees.GetEmployeesCollection()[Win_Employees.SelectedListBoxItemIndex].Position;
-            txtBx_Salary.Text = Win_Employees.GetEmployeesCollection()[Win_Employees.SelectedListBoxItemIndex].Salary.ToString();
-            if (Win_Employees.GetEmployeesCollection()[Win_Employees.SelectedListBoxItemIndex].Department != null)
+            txtBlck_ID.Text = _selectedEmployee.ID.ToString("d3");
+            txtBx_FirstName.Text = _selectedEmployee.FirstName;
+            txtBx_SecondName.Text = _selectedEmployee.SecondName;
+            txtBx_Position.Text= _selectedEmployee.Position;
+            txtBx_Salary.Text = _selectedEmployee.Salary.ToString();
+            CmbBox_Departmenrs.ItemsSource = _departments;
+            if (_selectedEmployee.Department != null)
             {
-                CmbBox_Departmenrs.Text = Win_Employees.GetEmployeesCollection()[Win_Employees.SelectedListBoxItemIndex].Department.ToString();
+                CmbBox_Departmenrs.Text = _selectedEmployee.Department.ToString();
             }
         }
 
@@ -46,7 +61,11 @@ namespace App_CompanyEmployees
             {
                 if (int.TryParse(txtBx_Salary.Text, out int salary))
                 {
-                    Win_Employees.EmployeeEdit(txtBx_FirstName.Text, txtBx_SecondName.Text, txtBx_Position.Text, salary, Win_Departments.GetDepartments()[CmbBox_Departmenrs.SelectedIndex]);
+                    _selectedEmployee.FirstName = txtBx_FirstName.Text;
+                    _selectedEmployee.SecondName = txtBx_SecondName.Text;
+                    _selectedEmployee.Position = txtBx_Position.Text;
+                    _selectedEmployee.Salary = salary;
+                    _selectedEmployee.Department = _departments[CmbBox_Departmenrs.SelectedIndex];
                     this.Close();
                 }
                 else MessageBox.Show("Некорректные символы в поле \"Оклад\"");

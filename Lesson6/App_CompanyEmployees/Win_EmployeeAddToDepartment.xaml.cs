@@ -17,25 +17,26 @@ using System.Collections.Specialized;
 namespace App_CompanyEmployees
 {
     /// <summary>
-    /// Окно добавления нового работника
+    /// Окно добавления нового работника в выбранный департамент
     /// </summary>
-    public partial class Win_EmployeeAdd : Window
+    public partial class Win_EmployeeAddToDepartment : Window
     {
+        /// <summary>
+        /// Ссылка на выбранный департамент в ListBox окна с общим списком департаментов
+        /// </summary>
+        Department _openedDepartment = Win_Departments.GetSelectedDepartment();
+
         /// <summary>
         /// Ссылка на общую коллекцию работников
         /// </summary>
         ObservableCollection<Employee> _employees = Win_Employees.Employees;
 
         /// <summary>
-        /// Ссылка на общую коллекцию департаментов
+        /// Конструктор
         /// </summary>
-        ObservableCollection<Department> _departments = Win_Departments.Departments;
-
-        public Win_EmployeeAdd()
+        public Win_EmployeeAddToDepartment()
         {
             InitializeComponent();
-
-            CmbBox_Departmenrs.ItemsSource = _departments;
         }
 
         /// <summary>
@@ -45,11 +46,11 @@ namespace App_CompanyEmployees
         /// <param name="e"></param>
         private void btn_OK_Click(object sender, RoutedEventArgs e)
         {
-            if (txtBx_FirstName.Text!="" && txtBx_Position.Text != "" && txtBx_SecondName.Text != "" && txtBx_Salary.Text != "" && CmbBox_Departmenrs.Text!="")
+            if (txtBx_FirstName.Text != "" && txtBx_Position.Text != "" && txtBx_SecondName.Text != "" && txtBx_Salary.Text != "")
             {
                 if (int.TryParse(txtBx_Salary.Text, out int salary))
                 {
-                    _employees.Add(new Employee(txtBx_FirstName.Text, txtBx_SecondName.Text, txtBx_Position.Text, salary, _departments[CmbBox_Departmenrs.SelectedIndex]));
+                    _employees.Add(new Employee (txtBx_FirstName.Text, txtBx_SecondName.Text, txtBx_Position.Text, salary, _openedDepartment));
                     this.Close();
                 }
                 else MessageBox.Show("Некорректные символы в поле \"Оклад\"");

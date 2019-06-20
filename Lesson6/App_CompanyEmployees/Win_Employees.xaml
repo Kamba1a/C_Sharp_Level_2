@@ -22,10 +22,10 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="btn_Add" Content="Добавить" HorizontalAlignment="Center" VerticalAlignment="Top" Width="130" Height="50" Grid.Column="1" Margin="32,50,38,0" Click="Btn_Add_Click"/>
-        <Button x:Name="btn_Del" Content="Удалить" HorizontalAlignment="Center" Margin="32,120,38,0" VerticalAlignment="Top" Width="130" Height="50" Grid.Column="1" Click="Btn_Del_Click"/>
-        <Button x:Name="btn_edit" Content="Редактировать" HorizontalAlignment="Center" Margin="32,190,38,0" VerticalAlignment="Top" Width="130" Height="50" Grid.Column="1" Click="Btn_edit_Click"/>
-        <Button x:Name="btn_DepartmentList" HorizontalAlignment="Center" Margin="32,0,38,30" VerticalAlignment="Bottom" Width="130" Height="50" Grid.Column="1" Click="btn_DepartmentList_Click">
+        <Button x:Name="btn_Add" Content="Добавить" HorizontalAlignment="Center" VerticalAlignment="Top" Width="130" Height="50" Grid.Column="1" Margin="0,50,0,0" Click="Btn_Add_Click"/>
+        <Button x:Name="btn_Del" Content="Удалить" HorizontalAlignment="Center" Margin="0,120,0,0" VerticalAlignment="Top" Width="130" Height="50" Grid.Column="1" Click="Btn_Del_Click"/>
+        <Button x:Name="btn_edit" Content="Редактировать" HorizontalAlignment="Center" Margin="0,190,0,0" VerticalAlignment="Top" Width="130" Height="50" Grid.Column="1" Click="Btn_edit_Click"/>
+        <Button x:Name="btn_DepartmentList" HorizontalAlignment="Center" Margin="0,0,0,30" VerticalAlignment="Bottom" Width="130" Height="50" Grid.Column="1" Click="btn_DepartmentList_Click">
             <TextBox IsHitTestVisible="False" TextWrapping="Wrap" Text="К списку департаментов" HorizontalContentAlignment="Center" Background="{Binding ElementName=btn_openEmpl, Mode=OneWay}" BorderBrush="{Binding Background, RelativeSource={RelativeSource Self}}"/>
         </Button>
     </Grid>

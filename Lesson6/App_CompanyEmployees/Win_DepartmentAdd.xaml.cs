@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 
 namespace App_CompanyEmployees
 {
@@ -19,6 +21,14 @@ namespace App_CompanyEmployees
     /// </summary>
     public partial class Win_DepartmentAdd : Window
     {
+        /// <summary>
+        /// Ссылка на коллекцию департаментов главного окна
+        /// </summary>
+        ObservableCollection<Department> _departments = Win_Departments.Departments;
+
+        /// <summary>
+        /// Конструктор
+        /// </summary>
         public Win_DepartmentAdd()
         {
             InitializeComponent();
@@ -33,7 +43,7 @@ namespace App_CompanyEmployees
         {
             if (txtBox_input.Text != "")
             {
-                Win_Departments.DepartmentAdd(new Department(txtBox_input.Text));
+                _departments.Add(new Department(txtBox_input.Text));
                 this.Close();
             }
         }
