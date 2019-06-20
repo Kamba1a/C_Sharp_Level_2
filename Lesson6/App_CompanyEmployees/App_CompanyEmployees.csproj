@@ -56,14 +56,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Employee.cs" />
-    <Compile Include="Win_EmloyeesOfDepartment.xaml.cs">
-      <DependentUpon>Win_EmloyeesOfDepartment.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Win_EmployeeAdd.xaml.cs">
       <DependentUpon>Win_EmployeeAdd.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Win_EmployeeAddToDepartment.xaml.cs">
-      <DependentUpon>Win_EmployeeAddToDepartment.xaml</DependentUpon>
     </Compile>
     <Compile Include="Win_EmployeeEdit.xaml.cs">
       <DependentUpon>Win_EmployeeEdit.xaml</DependentUpon>
@@ -98,15 +92,7 @@
       <DependentUpon>Win_Departments.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Win_EmloyeesOfDepartment.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Win_EmployeeAdd.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Win_EmployeeAddToDepartment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

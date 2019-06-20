@@ -111,23 +111,5 @@ namespace App_CompanyEmployees
             win_Employees.Show();
             this.Close();
         }
-
-        /// <summary>
-        /// Кнопка "Открыть.." - открывает окно со списком работников выбранного департамента
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Btn_openEmpl_Click(object sender, RoutedEventArgs e)
-        {
-            if (lst_Departments.SelectedItem != null)
-            {
-                _selectedListBoxItemIndex = lst_Departments.SelectedIndex;
-                Win_EmloyeesOfDepartment win_EmloyeesOfDepartment = new Win_EmloyeesOfDepartment();
-                win_EmloyeesOfDepartment.Owner = this;
-                win_EmloyeesOfDepartment.Show();
-            }
-            else MessageBox.Show("Для открытия выберите департамент в списке");
-        }
-
     }
 }

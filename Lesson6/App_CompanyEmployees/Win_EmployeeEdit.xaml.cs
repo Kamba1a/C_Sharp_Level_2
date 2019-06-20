@@ -57,18 +57,22 @@ namespace App_CompanyEmployees
         /// <param name="e"></param>
         private void btn_OK_Click(object sender, RoutedEventArgs e)
         {
-            if (txtBx_FirstName.Text != "" && txtBx_Position.Text != "" && txtBx_SecondName.Text != "" && txtBx_Salary.Text!="" && CmbBox_Departmenrs.Text != "")
+            if (txtBx_FirstName.Text != "" && txtBx_Position.Text != "" && txtBx_SecondName.Text != "" && txtBx_Salary.Text!="")
             {
-                if (int.TryParse(txtBx_Salary.Text, out int salary))
+                if (CmbBox_Departmenrs.Text != "")
                 {
-                    _selectedEmployee.FirstName = txtBx_FirstName.Text;
-                    _selectedEmployee.SecondName = txtBx_SecondName.Text;
-                    _selectedEmployee.Position = txtBx_Position.Text;
-                    _selectedEmployee.Salary = salary;
-                    _selectedEmployee.Department = _departments[CmbBox_Departmenrs.SelectedIndex];
-                    this.Close();
+                    if (int.TryParse(txtBx_Salary.Text, out int salary))
+                    {
+                        _selectedEmployee.FirstName = txtBx_FirstName.Text;
+                        _selectedEmployee.SecondName = txtBx_SecondName.Text;
+                        _selectedEmployee.Position = txtBx_Position.Text;
+                        _selectedEmployee.Salary = salary;
+                        _selectedEmployee.Department = _departments[CmbBox_Departmenrs.SelectedIndex];
+                        this.Close();
+                    }
+                    else MessageBox.Show("Некорректные символы в поле \"Оклад\"");
                 }
-                else MessageBox.Show("Некорректные символы в поле \"Оклад\"");
+                else MessageBox.Show("Выберите департамент");
             }
         }
 

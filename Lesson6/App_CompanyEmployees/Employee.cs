@@ -113,6 +113,10 @@ namespace App_CompanyEmployees
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
+        /// <summary>
+        /// Уведомление об изменении какого-либо свойства класса
+        /// </summary>
+        /// <param name="propertyName"></param>
         public void NotifyPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -147,15 +151,6 @@ namespace App_CompanyEmployees
             SecondName = secondName;
             Position = position;
             Salary = salary;
-            Department = department;
-        }
-
-        /// <summary>
-        /// Добавить работнику департамент
-        /// </summary>
-        /// <param name="department"></param>
-        public void SetDepartment(Department department)
-        {
             Department = department;
         }
 

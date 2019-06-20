@@ -31,10 +31,12 @@ namespace App_CompanyEmployees
         /// </summary>
         ObservableCollection<Department> _departments = Win_Departments.Departments;
 
+        /// <summary>
+        /// Конструктор
+        /// </summary>
         public Win_EmployeeAdd()
         {
             InitializeComponent();
-
             CmbBox_Departmenrs.ItemsSource = _departments;
         }
 
@@ -45,15 +47,20 @@ namespace App_CompanyEmployees
         /// <param name="e"></param>
         private void btn_OK_Click(object sender, RoutedEventArgs e)
         {
-            if (txtBx_FirstName.Text!="" && txtBx_Position.Text != "" && txtBx_SecondName.Text != "" && txtBx_Salary.Text != "" && CmbBox_Departmenrs.Text!="")
+            if (txtBx_FirstName.Text!="" && txtBx_Position.Text != "" && txtBx_SecondName.Text != "" && txtBx_Salary.Text != "")
             {
-                if (int.TryParse(txtBx_Salary.Text, out int salary))
+                if (CmbBox_Departmenrs.Text != "")
                 {
-                    _employees.Add(new Employee(txtBx_FirstName.Text, txtBx_SecondName.Text, txtBx_Position.Text, salary, _departments[CmbBox_Departmenrs.SelectedIndex]));
-                    this.Close();
+                    if (int.TryParse(txtBx_Salary.Text, out int salary))
+                    {
+                        _employees.Add(new Employee(txtBx_FirstName.Text, txtBx_SecondName.Text, txtBx_Position.Text, salary, _departments[CmbBox_Departmenrs.SelectedIndex]));
+                        this.Close();
+                    }
+                    else MessageBox.Show("Некорректные символы в поле \"Оклад\"");
                 }
-                else MessageBox.Show("Некорректные символы в поле \"Оклад\"");
+                else MessageBox.Show("Выберите департамент");
             }
+            else MessageBox.Show("Заполните все поля");
         }
 
         /// <summary>

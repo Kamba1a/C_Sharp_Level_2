@@ -15,7 +15,6 @@
         <Button x:Name="btn_Add" Content="Добавить" HorizontalAlignment="Center" VerticalAlignment="Top" Width="130" Height="50" Grid.Column="1" Margin="0,50,0,0" Click="Btn_Add_Click"/>
         <Button x:Name="btn_Del" Content="Удалить" HorizontalAlignment="Center" Margin="0,120,0,0" VerticalAlignment="Top" Width="130" Height="50" Grid.Column="1" Click="Btn_Del_Click"/>
         <Button x:Name="btn_edit" Content="Редактировать" HorizontalAlignment="Center" Margin="0,190,0,0" VerticalAlignment="Top" Width="130" Height="50" Grid.Column="1" Click="Btn_edit_Click"/>
-        <Button x:Name="btn_openEmpl" Content="Открыть..." HorizontalAlignment="Center" Margin="0,260,0,0" VerticalAlignment="Top" Width="130" Height="50" Grid.Column="1" Click="Btn_openEmpl_Click"/>
         <Button x:Name="btn_GenListEmpl" HorizontalAlignment="Center" Margin="0,0,0,30" VerticalAlignment="Bottom" Width="130" Height="50" Grid.Column="1" Click="Btn_GenListEmpl_Click">
             <TextBox IsHitTestVisible="False" TextWrapping="Wrap" Text="К общему списку сотрудников" HorizontalContentAlignment="Center" Background="{Binding ElementName=btn_openEmpl, Mode=OneWay}" BorderBrush="{Binding Background, RelativeSource={RelativeSource Self}}"/>
         </Button>

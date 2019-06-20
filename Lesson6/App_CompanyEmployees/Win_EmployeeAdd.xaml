@@ -11,7 +11,7 @@
         <Button x:Name="btn_OK" Content="ОК" HorizontalAlignment="Left" Margin="60,299,0,30" VerticalAlignment="Bottom" Width="75" Click="btn_OK_Click" Height="22"/>
         <Button x:Name="btn_Cancel" Content="Отмена" HorizontalAlignment="Right" Margin="242,299,60,30" VerticalAlignment="Bottom" Width="75" Click="btn_Cancel_Click" Height="22"/>
         <TextBox x:Name="txtBx_SecondName" HorizontalAlignment="Left" Margin="50,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="125"/>
-        <TextBox x:Name="txtBx_FirstName" HorizontalAlignment="Right" Margin="222,60,50,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="125"/>
+        <TextBox x:Name="txtBx_FirstName" HorizontalAlignment="Right" Margin="0,60,50,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="125"/>
         <TextBox x:Name="txtBx_Position" HorizontalAlignment="Center" Margin="67,144,75,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="250"/>
         <Label Content="Имя:" HorizontalAlignment="Center" Margin="261,30,95,0" VerticalAlignment="Top" Height="26" Width="36"/>
         <Label Content="Должность:" HorizontalAlignment="Center" Margin="154,113,164,0" VerticalAlignment="Top" Height="26" Width="74"/>
