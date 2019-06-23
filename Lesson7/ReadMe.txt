@@ -1,6 +1,6 @@
-1. Создать БД с именем Lesson7
+1. РЎРѕР·РґР°С‚СЊ Р‘Р” СЃ РёРјРµРЅРµРј Lesson7
 
-2. Создать таблицу Departments
+2. РЎРѕР·РґР°С‚СЊ С‚Р°Р±Р»РёС†Сѓ Departments
 
 CREATE TABLE [dbo].[Departments]
 (
@@ -9,7 +9,7 @@ CREATE TABLE [dbo].[Departments]
 )
 
 
-3. Создать таблицу Employees
+3. РЎРѕР·РґР°С‚СЊ С‚Р°Р±Р»РёС†Сѓ Employees
 
 CREATE TABLE [dbo].[Employees] (
     [Id]         INT            IDENTITY (1, 1) NOT NULL,
@@ -22,19 +22,19 @@ CREATE TABLE [dbo].[Employees] (
     FOREIGN KEY ([Department]) REFERENCES [Departments]([Id])
 );
 
-4. Для заполнения текстовыми данными выполнить:
+4. Р”Р»СЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ С‚РµРєСЃС‚РѕРІС‹РјРё РґР°РЅРЅС‹РјРё РІС‹РїРѕР»РЅРёС‚СЊ:
 
 SET IDENTITY_INSERT [dbo].[Departments] ON
-INSERT INTO [dbo].[Departments] ([Id], [Name]) VALUES (1, N'Администрация')
-INSERT INTO [dbo].[Departments] ([Id], [Name]) VALUES (2, N'Бухгалтерия')
-INSERT INTO [dbo].[Departments] ([Id], [Name]) VALUES (3, N'Технический отдел')
+INSERT INTO [dbo].[Departments] ([Id], [Name]) VALUES (1, N'РђРґРјРёРЅРёСЃС‚СЂР°С†РёСЏ')
+INSERT INTO [dbo].[Departments] ([Id], [Name]) VALUES (2, N'Р‘СѓС…РіР°Р»С‚РµСЂРёСЏ')
+INSERT INTO [dbo].[Departments] ([Id], [Name]) VALUES (3, N'РўРµС…РЅРёС‡РµСЃРєРёР№ РѕС‚РґРµР»')
 SET IDENTITY_INSERT [dbo].[Departments] OFF
 
 SET IDENTITY_INSERT [dbo].[Employees] ON
-INSERT INTO [dbo].[Employees] ([Id], [FirstName], [SecondName], [Position], [Salary], [Department]) VALUES (1, N'Константин', N'Иванов', N'Директор', 100000, 1)
-INSERT INTO [dbo].[Employees] ([Id], [FirstName], [SecondName], [Position], [Salary], [Department]) VALUES (2, N'Оксана', N'Петрова', N'Секретарь', 35000, 1)
-INSERT INTO [dbo].[Employees] ([Id], [FirstName], [SecondName], [Position], [Salary], [Department]) VALUES (3, N'Анна', N'Сидорова', N'Старший бухгалтер', 75000, 2)
-INSERT INTO [dbo].[Employees] ([Id], [FirstName], [SecondName], [Position], [Salary], [Department]) VALUES (4, N'Наталья', N'Иванова', N'Бухгалтер', 50000, 2)
-INSERT INTO [dbo].[Employees] ([Id], [FirstName], [SecondName], [Position], [Salary], [Department]) VALUES (5, N'Денис', N'Павлов', N'Администратор сети', 75000, 3)
-INSERT INTO [dbo].[Employees] ([Id], [FirstName], [SecondName], [Position], [Salary], [Department]) VALUES (6, N'Виталий', N'Игорев', N'Техник', 50000, 3)
+INSERT INTO [dbo].[Employees] ([Id], [FirstName], [SecondName], [Position], [Salary], [Department]) VALUES (1, N'РљРѕРЅСЃС‚Р°РЅС‚РёРЅ', N'РРІР°РЅРѕРІ', N'Р”РёСЂРµРєС‚РѕСЂ', 100000, 1)
+INSERT INTO [dbo].[Employees] ([Id], [FirstName], [SecondName], [Position], [Salary], [Department]) VALUES (2, N'РћРєСЃР°РЅР°', N'РџРµС‚СЂРѕРІР°', N'РЎРµРєСЂРµС‚Р°СЂСЊ', 35000, 1)
+INSERT INTO [dbo].[Employees] ([Id], [FirstName], [SecondName], [Position], [Salary], [Department]) VALUES (3, N'РђРЅРЅР°', N'РЎРёРґРѕСЂРѕРІР°', N'РЎС‚Р°СЂС€РёР№ Р±СѓС…РіР°Р»С‚РµСЂ', 75000, 2)
+INSERT INTO [dbo].[Employees] ([Id], [FirstName], [SecondName], [Position], [Salary], [Department]) VALUES (4, N'РќР°С‚Р°Р»СЊСЏ', N'Р›РµРЅРёРЅР°', N'Р‘СѓС…РіР°Р»С‚РµСЂ', 50000, 2)
+INSERT INTO [dbo].[Employees] ([Id], [FirstName], [SecondName], [Position], [Salary], [Department]) VALUES (5, N'Р”РµРЅРёСЃ', N'РџР°РІР»РѕРІ', N'РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ СЃРµС‚Рё', 75000, 3)
+INSERT INTO [dbo].[Employees] ([Id], [FirstName], [SecondName], [Position], [Salary], [Department]) VALUES (6, N'Р’РёС‚Р°Р»РёР№', N'РРіРѕСЂРµРІ', N'РўРµС…РЅРёРє', 50000, 3)
 SET IDENTITY_INSERT [dbo].[Employees] OFF
