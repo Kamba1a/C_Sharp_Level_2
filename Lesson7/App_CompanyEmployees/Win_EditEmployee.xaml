@@ -10,16 +10,17 @@
     </Window.Resources>
     <Grid>
         <Label Content="Фамилия:" HorizontalAlignment="Center" Margin="0,30,0,84" VerticalAlignment="Top"/>
-        <TextBox x:Name="FirstNameTxtBx" HorizontalAlignment="Center" Height="25" Margin="0,60,0,0" VerticalAlignment="Top" Width="250" RenderTransformOrigin="0.664,1.71"/>
+        <TextBox x:Name="SecondNameTxtBx" HorizontalAlignment="Center" Height="25" Margin="0,60,0,0" VerticalAlignment="Top" Width="250" RenderTransformOrigin="0.664,1.71"/>
         <Label Content="Имя:" HorizontalAlignment="Center" Margin="0,90,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="SecondNameTxtBx" HorizontalAlignment="Center" Height="25" Margin="0,120,0,0" VerticalAlignment="Top" Width="250" RenderTransformOrigin="0.664,1.71"/>
+        <TextBox x:Name="FirstNameTxtBx" HorizontalAlignment="Center" Height="25" Margin="0,120,0,0" VerticalAlignment="Top" Width="250" RenderTransformOrigin="0.664,1.71"/>
         <Label Content="Зарплата:" HorizontalAlignment="Center" Margin="0,150,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="SalaryTxtBx" HorizontalAlignment="Center" Height="25" Margin="0,180,0,0" VerticalAlignment="Top" Width="250" RenderTransformOrigin="0.664,1.71"/>
         <Label Content="Должность:" HorizontalAlignment="Center" Margin="0,210,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="PositionTxtBx" HorizontalAlignment="Center" Height="25" Margin="0,240,0,0" VerticalAlignment="Top" Width="250" RenderTransformOrigin="0.664,1.71"/>
         <Label Content="Департамент:" HorizontalAlignment="Center" Margin="0,270,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="DepartmentCmbBox" DisplayMemberPath="ID" HorizontalAlignment="Center" Height="25" Margin="0,300,0,0" VerticalAlignment="Top" Width="250" RenderTransformOrigin="0.664,1.71"/>
+        <ComboBox x:Name="DepartmentCmbBox" DisplayMemberPath="Name" HorizontalAlignment="Center" Height="25" Margin="0,300,0,0" VerticalAlignment="Top" Width="250" RenderTransformOrigin="0.664,1.71" SelectionChanged="DepartmentCmbBox_SelectionChanged"/>
         <Button x:Name="saveButton" IsDefault="True" Content="Сохранить" Margin="30,0,0,30" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="75" Click="saveButton_Click"/>
         <Button x:Name="cancelButton" IsCancel="True" Content="Отменить" Margin="0,0,30,30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="75" Click="cancelButton_Click"/>
+        <Label x:Name="Lbl_DepartmentID" HorizontalAlignment="Center" Margin="0,330,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="100" Height="25"/>
     </Grid>
 </Window>

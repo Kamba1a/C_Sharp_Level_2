@@ -45,7 +45,7 @@ namespace App_CompanyEmployees
             connection = new SqlConnection(connectionString);
             adapter = new SqlDataAdapter();
 
-            SqlCommand command = new SqlCommand("SELECT Employees.ID, Employees.FirstName as 'Имя', Employees.SecondName as 'Фамилия', Employees.Salary as 'Зарплата', Employees.Position as 'Должность', Departments.Name as 'Отдел', Departments.ID as 'ID отдела' FROM Employees INNER JOIN Departments ON Employees.Department = Departments.ID", connection);
+            SqlCommand command = new SqlCommand("SELECT Employees.ID, Employees.SecondName as 'Фамилия', Employees.FirstName as 'Имя', Employees.Salary as 'Зарплата', Employees.Position as 'Должность', Departments.Name as 'Отдел', Departments.ID as 'ID отдела' FROM Employees INNER JOIN Departments ON Employees.Department = Departments.ID", connection);
             adapter.SelectCommand = command;
 
             //insert

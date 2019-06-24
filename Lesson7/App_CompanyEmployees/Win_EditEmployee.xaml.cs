@@ -43,7 +43,7 @@ namespace App_CompanyEmployees
         {
             connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Lesson7;Integrated Security=True");
             adapter = new SqlDataAdapter();
-            SqlCommand command = new SqlCommand("SELECT ID, Name FROM Departments", connection); //можно передать в ComboBox Name, но тогда непонятно, как получить ID при сохранении данных
+            SqlCommand command = new SqlCommand("SELECT ID, Name FROM Departments", connection);
             adapter.SelectCommand = command;
 
             dt = new DataTable();
@@ -54,13 +54,19 @@ namespace App_CompanyEmployees
             SecondNameTxtBx.Text = resultRow["Фамилия"].ToString();
             SalaryTxtBx.Text = resultRow["Зарплата"].ToString();
             PositionTxtBx.Text = resultRow["Должность"].ToString();
-            DepartmentCmbBox.Text = resultRow["ID отдела"].ToString();
+            DepartmentCmbBox.Text = resultRow["Отдел"].ToString();
+            Lbl_DepartmentID.Content = dt.Rows[DepartmentCmbBox.SelectedIndex][0];
         }
 
-        //private void DepartmentCmbBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-        //    Lbl_DepartmentID.Content = dt.Rows[DepartmentCmbBox.SelectedIndex][0]; //попытка получить ID, если в ComboBox передается Name - не сработало
-        //}
+        /// <summary>
+        /// Событие при изменение выбора в ComboBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DepartmentCmbBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Lbl_DepartmentID.Content = dt.Rows[DepartmentCmbBox.SelectedIndex][0];
+        }
 
         /// <summary>
         /// кнопка "Сохранить"
@@ -75,9 +81,8 @@ namespace App_CompanyEmployees
                 resultRow["Фамилия"] = SecondNameTxtBx.Text;
                 resultRow["Зарплата"] = salary;
                 resultRow["Должность"] = PositionTxtBx.Text;
-                resultRow["Отдел"] = null;      //обновляется само при повторном открытии окна, а как сделать обновление сразу - не понятно
-                resultRow["ID Отдела"] = DepartmentCmbBox.Text;
-                //resultRow["ID отдела"] = Lbl_DepartmentID.Content;
+                resultRow["ID отдела"] = Lbl_DepartmentID.Content;
+                resultRow["Отдел"] = DepartmentCmbBox.Text;
                 DialogResult = true;
             }
             else MessageBox.Show("Неккоректные данные в поле \"Зарплата\"");
